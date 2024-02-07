@@ -1,0 +1,63 @@
+<html>
+<head>
+    <title>Hello World!</title>
+</head>
+
+<body>
+
+<button id="captcha">CAPTCHA</button>
+<p></p>
+<button id="get">GET</button>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $('#captcha').click(() => {
+
+        $.ajax({
+     url: "http://localhost:8080/rest/captcha",
+     type: "GET",
+     dataType: 'json',
+     contentType: "application/json",
+     xhrFields: {
+                     withCredentials: true
+                 },
+     success: function(results) {
+            alert(results);
+        },
+     error: function (xhr, ajaxOptions, thrownError) { //Add these parameters to display the required response
+         alert(xhr.status);
+         alert(xhr.responseText);
+     },
+ });
+
+
+    });
+
+    $('#get').click(() => {
+
+        $.ajax({
+     url: "http://localhost:8080/rest/get",
+     type: "GET",
+     dataType: 'json',
+     contentType: "application/json",
+     xhrFields: {
+                     withCredentials: true
+                 },
+    success: function(results) {
+            alert(results);
+        },
+     error: function (xhr, ajaxOptions, thrownError) { //Add these parameters to display the required response
+         alert(xhr.status);
+         alert(xhr.responseText);
+     },
+ });
+
+    });
+
+
+
+
+
+</script>
+
+</body>
